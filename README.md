@@ -68,8 +68,8 @@ The Hub account receives events from all the Spokes it is connected to. It extra
 "detail-type": "metric_extractor",
 "detail":  {
         "MetricName": "aName",
-        "MetricValue": aValue,
-        "ExtractionDate": aTimeStamp,
+        "MetricValue": "aValue",
+        "ExtractionDate": "aTimeStamp",
         "Metadata": {"field1":"value1"},
         "Environment": "dev",
         "ProjectName": "aProject"
