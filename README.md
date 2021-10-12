@@ -1,8 +1,8 @@
-# A lightweight, hub-and-spoke dashboard for large Data Science Projects
+# A lightweight, hub-and-spoke dashboard for cross-account Data Science Projects
 
 ## Introduction
 
-Large Data Science environments often involve many independent projects, each spanning multiple accounts.
+Modern Data Science environments often involve many independent projects, each spanning multiple accounts.
 In order to maintain a global overview of the activities within the projects, a mechanism to collect data from the different accounts into a central one is crucial.
 
 In this example code, we show how one can leverage existing services (Amazon DynamoDB, AWS Lambda, Amazon EventBridge) to deploy a very lightweight infrastructure that allows the flow of relevant metrics from one or more Spoke accounts to one (or more) Hub accounts.
