@@ -1,0 +1,7 @@
+-e .
+boto3
+aws_cdk.aws_dynamodb
+aws_cdk.aws_lambda
+aws_cdk.aws_lambda_event_sources
+aws_cdk.aws_events
+aws_cdk.aws_events_targets

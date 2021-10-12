@@ -1,0 +1,44 @@
+# authenticate to spoke
+
+cdk deploy -c metrics=TotalCompletedTrainingJobs,NumberEndPointsInService,CompletedTrainingJobs24h -c project_name=TestProject -c environment=[dev|prod] --force --require-approval never
+
+aws ssm put-parameter \
+    --name "/monitors/TestHub" \
+    --type "String" \
+    --value "HUB_ACCONT_ID" \
+    --overwrite
+
+# authenticate to hub
+
+cdk deploy --app "python3 hub.py" --force --require-approval never
+
+# now store the hub/spoke structure in the ssm parameter store
+
+# authenthicate to hub
+
+aws ssm put-parameter \
+    --name "/monitored_projects/TestProject/dev" \
+    --type "String" \
+    --value "SPOKE_ACCOUNT_ID" \
+    --overwrite
+
+
+
+# Now that the deployment is done and configuration data is stored, we can trigger the actual configuration of the accounts
+# the trick here is that we cannot configure a rule to send events to another account if the receiving account has not allowed
+# us to put events first. so we need to first configure the cross account events:PutEvent permission on both hub and spokes,
+# then we can (on both hub and spokes), configure the event rule for forwarding
+
+# in hub
+aws lambda invoke --function-name ds-dashboard-connection --payload "{ \"action\": \"EBPut\"}" lambda.out.json
+
+# in spoke
+
+aws lambda invoke --function-name ds-dashboard-connection --payload "{ \"action\": \"EBPut\"}" lambda.out.json
+aws lambda invoke --function-name ds-dashboard-connection --payload "{ \"action\": \"EBRule\"}" lambda.out.json
+
+# in hub, again, now we can configure another rule
+aws lambda invoke --function-name ds-dashboard-connection --payload "{ \"action\": \"EBRule\"}" lambda.out.json
+
+
+
