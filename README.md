@@ -215,7 +215,7 @@ As you can see, the amount of code to be written is really minimal, since most o
 
 The technology to use for analysis and visualization of the collected data depends on the constraints of the specific setup, i.e. what solutions are already available and in use within the environment. A detailed discussion is beyond the scope of this example. Instead, we connected two spokes to the hub and ran a few training jobs, deploying one model to production. The Amazon DynamoDB table was connected to Amazon QuickSight and here is a simple table visualization with two historical plots:
 
-[Image: img/example_dashboard.png]
+![Example QuickSight Dashboard](img/ds-dashboard-quicksight.png)
 ## Cleanup
 
 How to remove the resources created to avoid unnecessary costs.
