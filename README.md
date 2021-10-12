@@ -1,4 +1,4 @@
-# A lightweight, hub-and-spoke dashboard for large Data Science Projects
+# A lightweight, hub-and-spoke dashboard for multi account Data Science Projects
 
 ## Introduction
 
