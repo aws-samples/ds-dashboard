@@ -11,7 +11,9 @@ The quantities being monitored are called Metric in the following. We will focus
 
 ## General Architecture
 
-The overview of the solution is presented in the diagram in img/ds-dashboard.drawio.png
+The overview of the solution is presented in the diagram below:
+
+[img/ds-dashboard.drawio.png]
 
 As already mentioned, we use Amazon EventBridge for the cross-account information exchange, and Amazon DynamoDB as data store in the Hub account. AWS Lambda functions are used to extract information from the Spoke accounts and to store it in the Hub. The red arrows are the configuration flow, which happens only once. Green lines describe the flow for requesting new data from the Spokes. Blue lines show the flow of data from the Spokes to the Hub account.
 
@@ -46,7 +48,7 @@ In order to request new data from all Spokes, the Hub has to emit to its own eve
 {
     "source": "metric_extractor",
     "detail-type": "metric_extractor",
-    "resources": []
+    "resources": [],
     "detail": "{}"
 }
 ```
